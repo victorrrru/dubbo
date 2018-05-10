@@ -12,11 +12,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.Version;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -25,16 +21,17 @@ import java.nio.file.Paths;
  * @date 2018/05/04 14:31
  */
 public class Searcher {
-    IndexSearcher indexSearcher;
-    QueryParser queryParser;
-    Query query;
+    private IndexSearcher indexSearcher;
+    private QueryParser queryParser;
+    private Query query;
 
-    public Searcher(String indexDirectoryPath) throws IOException {
+    public void searcher(String indexDirectoryPath) throws IOException, ParseException {
         IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(indexDirectoryPath)));
         IndexSearcher searcher = new IndexSearcher(reader);
         Analyzer analyzer = new StandardAnalyzer();
         QueryParser parser = new QueryParser(LuceneConstants.CONTENTS, analyzer);
-        parser.parse()
+        query = parser.parse("GV白金卡还款");
+
     }
 
     public TopDocs search(String searchQuery)
@@ -48,7 +45,4 @@ public class Searcher {
         return indexSearcher.doc(scoreDoc.doc);
     }
 
-    public void close() throws IOException{
-        indexSearcher.close();
-    }
 }

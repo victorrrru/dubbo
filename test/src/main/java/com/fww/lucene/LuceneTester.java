@@ -42,7 +42,7 @@ public class LuceneTester {
     }
 
     private void search(String searchQuery) throws IOException, ParseException{
-        searcher = new Searcher(indexDir);
+        searcher = new Searcher();
         long startTime = System.currentTimeMillis();
         TopDocs hits = searcher.search(searchQuery);
         long endTime = System.currentTimeMillis();
@@ -54,6 +54,5 @@ public class LuceneTester {
             System.out.println("File: "
                     + doc.get(LuceneConstants.FILE_PATH));
         }
-        searcher.close();
     }
 }
