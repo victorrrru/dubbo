@@ -6,7 +6,7 @@ package com.fww.DesignMode.observer;
 public class ConcreteObserver extends Observer {
 
     private String name;
-    private String observerState;
+    private String message;
     private ConcreteSubject subject;
 
     public ConcreteObserver(String name, ConcreteSubject subject) {
@@ -16,7 +16,7 @@ public class ConcreteObserver extends Observer {
 
     @Override
     public void update() {
-        observerState = subject.getSujectState();
-        System.out.println("通知" + name + ":" + observerState);
+        message = subject.getMessage();
+        System.out.println(name + "收到推送消息：" + message);
     }
 }

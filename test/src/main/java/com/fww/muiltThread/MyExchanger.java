@@ -73,7 +73,7 @@ public class MyExchanger {
         Exchanger<Integer> exchanger = new Exchanger<>();
         ExchangerProducer producer = new ExchangerProducer(exchanger);
         ExchangerConsumer consumer = new ExchangerConsumer(exchanger);
-        exec.submit(producer);
+        exec.execute(producer);
         exec.execute(consumer);
         exec.shutdown();
         try {

@@ -87,7 +87,7 @@ public class Try {
         long count = Files.walk(Paths.get("E:\\smart\\smart_api"))    // 递归获得项目目录下的所有文件
                 .filter(file -> !Files.isDirectory(file))   // 筛选出文件
                 .filter(file -> file.toString().endsWith(".java"))  // 筛选出 java 文件
-                .flatMap(Try.of(file -> Files.lines(file), Stream.empty()))     // 将会抛出受检异常的 Lambda 包装为 抛出非受检异常的 Lambda
+                .flatMap(Try.of(Files::lines, Stream.empty()))     // 将会抛出受检异常的 Lambda 包装为 抛出非受检异常的 Lambda
                 .filter(line -> !line.trim().isEmpty())         // 过滤掉空行
                 .filter(line -> !line.trim().startsWith("//"))  //过滤掉 //之类的注释
                 .filter(line -> !(line.trim().startsWith("/*") && line.trim().endsWith("*/")))  //过滤掉/* */之类的注释

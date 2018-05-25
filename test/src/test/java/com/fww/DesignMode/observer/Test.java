@@ -11,8 +11,7 @@ public class Test {
         subject.add(new ConcreteObserver("小红", subject));
         subject.add(new ConcreteObserver("小白", subject));
 
-        subject.setSujectState("...老板回来了");
-        subject.advice();
+        subject.setMessage("老板回来了");
     }
 
 }
