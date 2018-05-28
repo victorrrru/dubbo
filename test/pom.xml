@@ -23,6 +23,18 @@
 	</properties>
 
 	<dependencies>
+		<!--fastjson-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.39</version>
+		</dependency>
+		<!--dom4j-->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
 		<!--crawl-->
 		<dependency>
 			<groupId>com.googlecode.juniversalchardet</groupId>
